@@ -1,0 +1,132 @@
+*{
+ box-sizing: border-box;
+}
+
+body{
+ height: 100vh;
+ width: 100vw;
+ margin: 0px;
+ padding: 0px;
+ background-color: black;
+}
+
+.videoBody{
+ height: 100vh;
+ width: 100vw;
+}
+
+.videoBody video{
+ height:100vh;
+ width: 100vw;
+}
+.action-btnBody{
+ position: absolute;
+ height: 40vh;
+ width: 7.5vw;
+ right: 16.7rem;
+ top: calc(60vh - 30vh);
+ display: flex;
+ justify-content: space-evenly;
+ align-items: center;
+ flex-direction: column;
+ z-index: 1;
+}
+.action-btn{
+ height: 5.5rem;
+ width: 5.5rem;
+ border-radius: 50%;
+ border: 5px solid white;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.inner-action-btn{
+ height: 4rem;
+ width: 4rem;
+ border-radius: 50%;
+}
+.picCapture{
+ background-color: white;
+}
+.videoRecord{
+ background-color: red;
+} 
+
+.picCaptureAni{
+ animation-name: picCapture;
+ animation-duration: 400ms;
+ animation-iteration-count: 1;
+ animation-fill-mode: backwards;
+}
+
+@keyframes picCapture {
+ 0%{opacity: 0;}
+ 50%{opacity: 100;}
+}
+.videoRecordAni{
+  animation-name: picCapture;
+ animation-duration: 1s;
+ animation-fill-mode: both;
+ animation-iteration-count: infinite;
+}
+
+@keyframes picCapture {
+ 0%{transform: scale(0);}
+ 50%{transform: scale(1)}
+ 100%{transform: scale(0)}
+}
+
+.timerBody{
+ position: absolute;
+ height: 5rem;
+ width: 20rem;
+ /* border: 2px solid white; */
+ bottom: 10px;
+ left: 20rem;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size:4rem;
+ font-family: 'Roboto', sans-serif;
+}
+
+.timer{
+ color: white;
+}
+
+.filter-container{
+  height: 16rem;
+  width: 6rem;
+  position:absolute;
+  top: 15rem;
+  left: 19rem;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  z-index: 1;
+}
+.filterBox{
+  height: 4rem;
+  width: 6rem;
+  /* background-color: white; */
+  background-image: url("./filterImg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%,100%;
+  background-blend-mode: color-burn;
+}
+.blueFilterImage{
+  background-color:#0000ff4a;
+}
+.yellowFilterImage{
+  background-color:#f0ff5373;
+}
+.darkFilterImage{
+  background-color: rgb(183 134 134 / 56%);
+}
+.filterScreen{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-blend-mode: color-burn;
+}
