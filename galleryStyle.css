@@ -1,0 +1,61 @@
+*{
+ box-sizing: border-box;
+}
+
+body{
+ padding: 0;
+ margin: 0;
+ height: 100vh;
+ width: 100vw;
+}
+
+.goback{
+ position: fixed;
+ bottom: 1.5rem;
+ right: 1.5rem;
+}
+
+.galleryImageBody{
+ height: 100vh;
+ width: 100vw;
+ background-color:#dfe4ea;
+ padding: 1.5rem;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-evenly;
+}
+
+.mediaBox{
+ height: 15rem;
+ width:12rem;
+border-radius: 20px;
+box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+overflow: hidden;
+}
+.galleryImage-media{
+ height: 75%;
+ width: 100%;
+ background-color: rgb(255, 78, 78);
+}
+.galleryImage-media >*{
+ height: 100%;
+ width: 100%;
+ object-fit: fill;
+}
+.galleryImage-delete{
+ height: 12.5%;
+ width: 100%;
+ background-color: rgb(152, 153, 255);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ 
+}
+.galleryImage-download{
+ height: 12.5%;
+ width: 100%;
+ background-color: rgb(216, 255, 126);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}

@@ -13,7 +13,7 @@ let constraints = {
 navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
   video.srcObject = stream;
   recorder = new MediaRecorder(stream);
- recorder.addEventListener('start', (e) => {
+  recorder.addEventListener('start', (e) => {
   chuncks = [];
   
   });
@@ -21,13 +21,20 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     chuncks.push(e.data);
   });
 
- recorder.addEventListener('stop', (e) => {
+  recorder.addEventListener('stop', (e) => {
     let blob = new Blob(chuncks, { type: 'Video/mp4' });
-    let videoURL = URL.createObjectURL(blob);
-    let a = document.createElement('a');
-    a.href = videoURL;
-    a.download = 'stream.mp4';
-    a.click();
+    // let videoURL = URL.createObjectURL(blob);
+    // let a = document.createElement('a');
+    // a.href = videoURL;
+    // a.download = 'stream.mp4';
+    // a.click();
+    if (Bd) {
+      let id = shortid();
+    let TransactionDB = Bd.transaction('video', 'readwrite');
+    let videoStrore = TransactionDB.objectStore('video');
+    videoStrore.add({ id: `vid-${id}`, video: blob });
+   }
+   
   });
 });
 
@@ -47,15 +54,23 @@ picBtn.addEventListener('click', (e) => {
   tool.fillStyle = filterColor;
   tool.fillRect(0,0,canvas.width,canvas.height)
   let imageURl = canvas.toDataURL();
-   let a = document.createElement('a');
-   a.href = imageURl;
-   a.download = 'image.jpg';
-   a.click();
+  //  let a = document.createElement('a');
+  //  a.href = imageURl;
+  //  a.download = 'image.jpg';
+  //  a.click();
+   if (Bd) {
+     let id = shortid();
+     let TransactionDB = Bd.transaction('image', 'readwrite');
+     let videoStrore = TransactionDB.objectStore('image');
+     videoStrore.add({ id:`img-${id}`, image:imageURl });
+   }
 
 });
 
 recordBtn.addEventListener('click', (e) => {
+
   if (!recorder) return;
+
   isRecord ? (isRecord = false) : (isRecord = true);
   if (isRecord) {
     recordBtn.classList.add('videoRecordAni');
@@ -66,12 +81,13 @@ recordBtn.addEventListener('click', (e) => {
      recorder.stop();
     stopTimer();
   }
-});
 
+});
 
 let count = 0;
 let timer = document.querySelector('.timer');
 let startTimerID;
+
 function startTimer() {
  startTimerID = setInterval(() => {
   let hours = Number.parseInt(count / 3600);
@@ -85,6 +101,7 @@ function startTimer() {
   count++
  },1000)
 }
+
 function stopTimer() {
  clearInterval(startTimerID)
  timer.innerText = '00:00:00'

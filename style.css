@@ -130,3 +130,23 @@ body{
   width: 100%;
   background-blend-mode: color-burn;
 }
+.galleryBox{
+  position: fixed;
+  bottom: 2rem;
+  right: 18rem;
+
+  background-color: black;
+  height: 4.5rem;
+  width: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.galleryBox:hover{
+  cursor: pointer;
+}
+.material-icons-outlined{
+  color: white;
+  font-size: 2.5rem;
+}
